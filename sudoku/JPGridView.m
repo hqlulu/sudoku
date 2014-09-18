@@ -21,14 +21,13 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        for (int i = 0; i < 9; ++i) {
-            
-        }
-        
-        
         CGFloat size = MIN(CGRectGetWidth(frame), CGRectGetHeight(frame));
         // Create button.
         CGFloat separationDistance = 1.0;
+        
+        // We will have 6 lines of width separationDistance, and
+        // 4 lines of width 2*separationDistance, so the total width of
+        // all lines will be 14*separationdistance
         CGFloat buttonSize = ((size - 14 * separationDistance) / 9.0);
         
         CGFloat currentY = 2 * separationDistance;
@@ -39,19 +38,22 @@
         for (int i = 0; i < 9; ++i) {
             CGFloat currentX = 2 * separationDistance;
             
+            // Create rows of buttons
             NSMutableArray* currentRow;
             currentRow = [[NSMutableArray alloc] initWithCapacity:9];
             for (int j = 0; j < 9; ++j) {
                 CGRect buttonFrame = CGRectMake(currentX,currentY,buttonSize,buttonSize);
                 
+                // Create buttons
                 UIButton* _button = [[UIButton alloc] initWithFrame:buttonFrame];
                 _button.backgroundColor = [UIColor orangeColor];
                 [self addSubview:_button];
                 [_button setTag:9*i + j];
                 [_button setShowsTouchWhenHighlighted:YES];
                 [_button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                
                 [currentRow insertObject:_button atIndex:j];
+                
+                // Update position variables
                 if (j % 3 == 2) {
                     currentX += separationDistance;
                 }
@@ -72,7 +74,7 @@
 - (void)buttonPressed:(id)sender
 {
     UIButton* tempButton = (UIButton*) sender;
-    NSLog(@"Button %i was pressed.", tempButton.tag);
+    NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
 }
 
 - (void)setCellatRow:(int)row andColumn:(int)column toValue:(int)value {
