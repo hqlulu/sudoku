@@ -1,5 +1,5 @@
 //
-//  JPViewController.h
+//  JPAppDelegate.h
 //  sudoku
 //
 //  Created by Josh Petrack on 9/11/14.
@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JPViewController : UIViewController
+@interface JFJPAppDelegate : UIResponder <UIApplicationDelegate>
+
+@property (strong, nonatomic) UIWindow *window;
 
 @end

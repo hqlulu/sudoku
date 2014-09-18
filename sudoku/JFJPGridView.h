@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface JPGridView : UIView
+@interface JFJPGridView : UIView
 
 - (void) setCellatRow:(int)row andColumn:(int)column toValue:(int)value;
 

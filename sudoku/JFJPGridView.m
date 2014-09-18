@@ -6,15 +6,15 @@
 //  Copyright (c) 2014 Josh Petrack. All rights reserved.
 //
 
-#import "JPGridView.h"
+#import "JFJPGridView.h"
 
-@interface JPGridView (){
+@interface JFJPGridView (){
     NSMutableArray*  _buttons;
 }
 
 @end
 
-@implementation JPGridView
+@implementation JFJPGridView
 
 - (id)initWithFrame:(CGRect)frame
 {

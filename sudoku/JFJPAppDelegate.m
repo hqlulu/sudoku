@@ -6,9 +6,9 @@
 //  Copyright (c) 2014 Josh Petrack. All rights reserved.
 //
 
-#import "JPAppDelegate.h"
+#import "JFJPAppDelegate.h"
 
-@implementation JPAppDelegate
+@implementation JFJPAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

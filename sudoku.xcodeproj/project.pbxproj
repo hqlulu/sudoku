@@ -12,17 +12,17 @@
 		0303ABC519C25D1A00888433 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0303ABC419C25D1A00888433 /* UIKit.framework */; };
 		0303ABCB19C25D1A00888433 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABC919C25D1A00888433 /* InfoPlist.strings */; };
 		0303ABCD19C25D1A00888433 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABCC19C25D1A00888433 /* main.m */; };
-		0303ABD119C25D1A00888433 /* JPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABD019C25D1A00888433 /* JPAppDelegate.m */; };
+		0303ABD119C25D1A00888433 /* JFJPAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABD019C25D1A00888433 /* JFJPAppDelegate.m */; };
 		0303ABD419C25D1A00888433 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABD219C25D1A00888433 /* Main_iPhone.storyboard */; };
 		0303ABD719C25D1A00888433 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABD519C25D1A00888433 /* Main_iPad.storyboard */; };
-		0303ABDA19C25D1A00888433 /* JPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABD919C25D1A00888433 /* JPViewController.m */; };
+		0303ABDA19C25D1A00888433 /* JFJPViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABD919C25D1A00888433 /* JFJPViewController.m */; };
 		0303ABDC19C25D1A00888433 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABDB19C25D1A00888433 /* Images.xcassets */; };
 		0303ABE319C25D1A00888433 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0303ABE219C25D1A00888433 /* XCTest.framework */; };
 		0303ABE419C25D1A00888433 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0303ABC019C25D1A00888433 /* Foundation.framework */; };
 		0303ABE519C25D1A00888433 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0303ABC419C25D1A00888433 /* UIKit.framework */; };
 		0303ABED19C25D1A00888433 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABEB19C25D1A00888433 /* InfoPlist.strings */; };
 		0303ABEF19C25D1A00888433 /* sudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABEE19C25D1A00888433 /* sudokuTests.m */; };
-		0303ABFA19C376F400888433 /* JPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABF919C376F400888433 /* JPGridView.m */; };
+		0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABF919C376F400888433 /* JFJPGridView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,20 +44,20 @@
 		0303ABCA19C25D1A00888433 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0303ABCC19C25D1A00888433 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		0303ABCE19C25D1A00888433 /* sudoku-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sudoku-Prefix.pch"; sourceTree = "<group>"; };
-		0303ABCF19C25D1A00888433 /* JPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPAppDelegate.h; sourceTree = "<group>"; };
-		0303ABD019C25D1A00888433 /* JPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPAppDelegate.m; sourceTree = "<group>"; };
+		0303ABCF19C25D1A00888433 /* JFJPAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFJPAppDelegate.h; sourceTree = "<group>"; };
+		0303ABD019C25D1A00888433 /* JFJPAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFJPAppDelegate.m; sourceTree = "<group>"; };
 		0303ABD319C25D1A00888433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		0303ABD619C25D1A00888433 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		0303ABD819C25D1A00888433 /* JPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JPViewController.h; sourceTree = "<group>"; };
-		0303ABD919C25D1A00888433 /* JPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JPViewController.m; sourceTree = "<group>"; };
+		0303ABD819C25D1A00888433 /* JFJPViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JFJPViewController.h; sourceTree = "<group>"; };
+		0303ABD919C25D1A00888433 /* JFJPViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JFJPViewController.m; sourceTree = "<group>"; };
 		0303ABDB19C25D1A00888433 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		0303ABE119C25D1A00888433 /* sudokuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = sudokuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0303ABE219C25D1A00888433 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		0303ABEA19C25D1A00888433 /* sudokuTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "sudokuTests-Info.plist"; sourceTree = "<group>"; };
 		0303ABEC19C25D1A00888433 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		0303ABEE19C25D1A00888433 /* sudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sudokuTests.m; sourceTree = "<group>"; };
-		0303ABF819C376F400888433 /* JPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPGridView.h; sourceTree = "<group>"; };
-		0303ABF919C376F400888433 /* JPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JPGridView.m; sourceTree = "<group>"; };
+		0303ABF819C376F400888433 /* JFJPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPGridView.h; sourceTree = "<group>"; };
+		0303ABF919C376F400888433 /* JFJPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,14 +117,14 @@
 		0303ABC619C25D1A00888433 /* sudoku */ = {
 			isa = PBXGroup;
 			children = (
-				0303ABCF19C25D1A00888433 /* JPAppDelegate.h */,
-				0303ABD019C25D1A00888433 /* JPAppDelegate.m */,
+				0303ABCF19C25D1A00888433 /* JFJPAppDelegate.h */,
+				0303ABD019C25D1A00888433 /* JFJPAppDelegate.m */,
 				0303ABD219C25D1A00888433 /* Main_iPhone.storyboard */,
 				0303ABD519C25D1A00888433 /* Main_iPad.storyboard */,
-				0303ABD819C25D1A00888433 /* JPViewController.h */,
-				0303ABD919C25D1A00888433 /* JPViewController.m */,
-				0303ABF819C376F400888433 /* JPGridView.h */,
-				0303ABF919C376F400888433 /* JPGridView.m */,
+				0303ABD819C25D1A00888433 /* JFJPViewController.h */,
+				0303ABD919C25D1A00888433 /* JFJPViewController.m */,
+				0303ABF819C376F400888433 /* JFJPGridView.h */,
+				0303ABF919C376F400888433 /* JFJPGridView.m */,
 				0303ABDB19C25D1A00888433 /* Images.xcassets */,
 				0303ABC719C25D1A00888433 /* Supporting Files */,
 			);
@@ -259,9 +259,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0303ABD119C25D1A00888433 /* JPAppDelegate.m in Sources */,
-				0303ABDA19C25D1A00888433 /* JPViewController.m in Sources */,
-				0303ABFA19C376F400888433 /* JPGridView.m in Sources */,
+				0303ABD119C25D1A00888433 /* JFJPAppDelegate.m in Sources */,
+				0303ABDA19C25D1A00888433 /* JFJPViewController.m in Sources */,
+				0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */,
 				0303ABCD19C25D1A00888433 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -477,6 +477,7 @@
 				0303ABF419C25D1A00888433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		0303ABF519C25D1A00888433 /* Build configuration list for PBXNativeTarget "sudokuTests" */ = {
 			isa = XCConfigurationList;
@@ -485,6 +486,7 @@
 				0303ABF719C25D1A00888433 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

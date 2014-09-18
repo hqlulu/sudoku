@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Josh Petrack. All rights reserved.
 //
 
-#import "JPViewController.h"
-#import "JPGridView.h"
+#import "JFJPViewController.h"
+#import "JFJPGridView.h"
 
 int initialGrid[9][9]={
     {7,0,0,4,2,0,0,0,9},
@@ -22,14 +22,14 @@ int initialGrid[9][9]={
 };
 
 
-@interface JPViewController () {
+@interface JFJPViewController () {
     
-    JPGridView* _gridView;
+    JFJPGridView* _gridView;
 }
 
 @end
 
-@implementation JPViewController
+@implementation JFJPViewController
 
 - (void)viewDidLoad
 {
@@ -45,7 +45,7 @@ int initialGrid[9][9]={
     CGRect gridFrame = CGRectMake(x,y,size,size);
     
     // Create grid view.
-    _gridView = [[JPGridView alloc] initWithFrame:gridFrame];
+    _gridView = [[JFJPGridView alloc] initWithFrame:gridFrame];
     _gridView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_gridView];
     
