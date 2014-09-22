@@ -10,6 +10,8 @@
 
 @interface JFJPGridView (){
     NSMutableArray*  _buttons;
+    id _target;
+    SEL _action;
 }
 
 @end
@@ -50,7 +52,7 @@
                 [self addSubview:_button];
                 [_button setTag:9*i + j];
                 [_button setShowsTouchWhenHighlighted:YES];
-                [_button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+                [_button addTarget:self action:@selector(cellSelected:) forControlEvents:UIControlEventTouchUpInside];
                 [currentRow insertObject:_button atIndex:j];
                 
                 // Update position variables
@@ -71,15 +73,21 @@
     return self;
 }
 
-- (void)buttonPressed:(id)sender
-{
+- (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
+    [_target performSelector:_action withObject:sender];
+    
 }
 
-- (void)setCellatRow:(int)row andColumn:(int)column toValue:(int)value {
+- (void)setValueatRow:(int)row column:(int)column to:(int)value {
     UIButton* button = [[_buttons objectAtIndex:row] objectAtIndex: column];
     [button setTitle:[NSString stringWithFormat:@"%i", value] forState:UIControlStateNormal];
+}
+
+- (void) setTarget:(id)target action:(SEL)action {
+    _target = target;
+    _action = action;
 }
 
 /*
