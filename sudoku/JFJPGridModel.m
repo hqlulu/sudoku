@@ -29,6 +29,13 @@ int initialGrid[9][9]={
 
 @implementation JFJPGridModel
 
+- (void) generateGrid {
+    for (int i = 0; i < 9; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            _cells[i][j] = initialGrid[i][j];
+        }
+    }
+}
 
 - (int) getValueAtRow:(int)row column:(int)column {
     NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);

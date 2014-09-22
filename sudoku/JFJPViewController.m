@@ -8,6 +8,8 @@
 
 #import "JFJPViewController.h"
 #import "JFJPGridView.h"
+#import "JFJPNumPadView.h"
+#import "JFJPGridModel.h"
 
 
 
@@ -15,6 +17,8 @@
 @interface JFJPViewController () {
     
     JFJPGridView* _gridView;
+    JFJPGridModel* _gridModel;
+    JFJPNumPadView* _numPadView;
     
 }
 
@@ -40,15 +44,30 @@
     _gridView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_gridView];
     
-    [self setInitialGrid];
+    // Create numpad frame.
+    CGRect numpadFrame = CGRectMake(x, y+size*10/9, size, size/9.5);
+    
+    // Create numpad view
+    _numPadView = [[JFJPNumPadView alloc] initWithFrame:numpadFrame];
+    _numPadView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_numPadView];
+    
+    // Create grid model
+    _gridModel = [[JFJPGridModel alloc] init];
+    [_gridModel generateGrid];
+    
+    
+    
+    [self setGridViewValues];
     
 }
 
-- (void)setInitialGrid {
+- (void)setGridViewValues {
     for(int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
-            if (initialGrid[i][j] != 0) {
-                [_gridView setCellatRow:i andColumn:j toValue:initialGrid[i][j]];
+            int value = [_gridModel getValueAtRow:i column:j];
+            if (value != 0) {
+                [_gridView setValueatRow:i column:j to:value];
             }
         }
     }

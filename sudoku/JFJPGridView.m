@@ -9,7 +9,7 @@
 #import "JFJPGridView.h"
 
 @interface JFJPGridView (){
-    NSMutableArray*  _buttons;
+    NSMutableArray*  _cells;
     id _target;
     SEL _action;
 }
@@ -34,7 +34,7 @@
         
         CGFloat currentY = 2 * separationDistance;
         
-        _buttons = [[NSMutableArray alloc] initWithCapacity:9];
+        _cells = [[NSMutableArray alloc] initWithCapacity:9];
         
         
         for (int i = 0; i < 9; ++i) {
@@ -63,7 +63,7 @@
             }
             
             // Insert the new sub-array of buttons into the main array.
-            [_buttons insertObject:currentRow atIndex:i];
+            [_cells insertObject:currentRow atIndex:i];
             if (i % 3 == 2) {
                 currentY += separationDistance;
             }
@@ -77,11 +77,10 @@
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
     [_target performSelector:_action withObject:sender];
-    
 }
 
 - (void)setValueatRow:(int)row column:(int)column to:(int)value {
-    UIButton* button = [[_buttons objectAtIndex:row] objectAtIndex: column];
+    UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
     [button setTitle:[NSString stringWithFormat:@"%i", value] forState:UIControlStateNormal];
 }
 

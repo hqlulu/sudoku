@@ -10,6 +10,6 @@
 
 @interface JFJPGridView : UIView
 
-- (void) setCellatRow:(int)row column:(int)column toValue:(int)value;
+- (void) setValueatRow:(int)row column:(int)column to:(int)value;
 
 @end
