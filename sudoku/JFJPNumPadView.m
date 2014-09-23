@@ -11,8 +11,6 @@
 @interface JFJPNumPadView (){
     NSMutableArray *_cells;
     int _currentValue;
-    id _target;
-    SEL _action;
 }
 @end
 
@@ -32,7 +30,8 @@
         
         for (int i = 0; i <= 9; ++i) {
             CGRect buttonFrame = CGRectMake((separationDistance+buttonSize)*i+separationDistance,
-                                            separationDistance, buttonSize, buttonSize);
+                                            separationDistance, buttonSize,
+                                            buttonSize + 2*separationDistance);
             UIButton *button = [[UIButton alloc] initWithFrame:buttonFrame];
             button.backgroundColor = [UIColor orangeColor];
             [self addSubview:button];
@@ -58,7 +57,7 @@
 - (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button %d was pressed.", tempButton.tag);
-    [_target performSelector:_action withObject:sender];
+    _currentValue = tempButton.tag;
 }
 
 - (int) getCurrentValue {

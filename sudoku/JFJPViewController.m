@@ -43,9 +43,10 @@
     _gridView = [[JFJPGridView alloc] initWithFrame:gridFrame];
     _gridView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_gridView];
+    [_gridView setTarget:self action:@selector(gridCellSelectedatRow:column:)];
     
     // Create numpad frame.
-    CGRect numpadFrame = CGRectMake(x, y+size*10/9, size, size/9.5);
+    CGRect numpadFrame = CGRectMake(x, y+size*10/9, size, size/9);
     
     // Create numpad view
     _numPadView = [[JFJPNumPadView alloc] initWithFrame:numpadFrame];
@@ -72,6 +73,19 @@
         }
     }
     
+}
+
+- (void)gridCellSelectedatRow:(NSNumber*)objectRow column:(NSNumber*)objectColumn {
+    int cellRow = [objectRow integerValue];
+    int cellColumn = [objectColumn integerValue];
+    int selectedNumber = [_numPadView getCurrentValue];
+    if ([_gridModel isMutableAtRow:cellRow column:cellColumn] &&
+        [_gridModel isConsistentAtRow:cellRow column:cellColumn for:selectedNumber]) {
+        
+        // Update the model and the view
+        [_gridModel setValueAtRow:cellRow column:cellColumn to:selectedNumber];
+        [_gridView setValueatRow:cellRow column:cellColumn to:selectedNumber];
+    }
 }
 
 - (void)didReceiveMemoryWarning

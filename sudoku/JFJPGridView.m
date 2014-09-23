@@ -76,7 +76,9 @@
 - (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
-    [_target performSelector:_action withObject:sender];
+    [_target performSelector:_action
+                  withObject:[NSNumber numberWithInt:tempButton.tag/9]
+                  withObject:[NSNumber numberWithInt:tempButton.tag%9]];
 }
 
 - (void)setValueatRow:(int)row column:(int)column to:(int)value {

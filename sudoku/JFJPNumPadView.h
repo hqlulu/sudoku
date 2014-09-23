@@ -10,4 +10,6 @@
 
 @interface JFJPNumPadView : UIView
 
+- (int) getCurrentValue;
+
 @end
