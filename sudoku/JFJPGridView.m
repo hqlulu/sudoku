@@ -106,7 +106,7 @@
         title =[NSString stringWithFormat:@"%i", value];
     }
     [button setTitle:title forState:UIControlStateNormal];
-    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
     [button.titleLabel setFont:[UIFont systemFontOfSize:16]];
 }
 
