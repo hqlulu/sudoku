@@ -10,6 +10,7 @@
 
 @interface JFJPGridView : UIView
 
+- (void) initValueatRow:(int)row column:(int)column to:(int)value;
 - (void) setValueatRow:(int)row column:(int)column to:(int)value;
 - (void) setTarget:(id)target action:(SEL)action;
 

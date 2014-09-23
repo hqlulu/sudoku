@@ -47,7 +47,7 @@ int initialGrid[9][9]={
 - (void) setValueAtRow:(int)row column:(int)column to:(int)value {
     NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
     NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
-    NSAssert(1 <= value && value <= 9, @"Invalid value: %d", value);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
     
     _cells[row][column] = value;
 }
@@ -62,7 +62,12 @@ int initialGrid[9][9]={
 - (bool) isConsistentAtRow:(int)row column:(int)column for:(int)value {
     NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
     NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
-    NSAssert(1 <= value && value <= 9, @"Invalid value: %d", value);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
+    
+    // A value of 0 is always consistent (it blanks the cell).
+    if (value == 0) {
+        return YES;
+    }
     
     // Check the row.
     for (int i = 0; i < 9; ++i) {

@@ -68,7 +68,7 @@
         for (int j = 0; j < 9; ++j) {
             int value = [_gridModel getValueAtRow:i column:j];
             if (value != 0) {
-                [_gridView setValueatRow:i column:j to:value];
+                [_gridView initValueatRow:i column:j to:value];
             }
         }
     }

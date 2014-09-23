@@ -48,7 +48,7 @@
                 
                 // Create buttons
                 UIButton* _button = [[UIButton alloc] initWithFrame:buttonFrame];
-                _button.backgroundColor = [UIColor orangeColor];
+                _button.backgroundColor = [UIColor grayColor];
                 [self addSubview:_button];
                 [_button setTag:9*i + j];
                 [_button setShowsTouchWhenHighlighted:YES];
@@ -81,9 +81,33 @@
                   withObject:[NSNumber numberWithInt:tempButton.tag%9]];
 }
 
+- (void)initValueatRow:(int)row column:(int)column to:(int)value {
+    UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
+    NSString* title;
+    if (value == 0) {
+        title = @"";
+    }
+    else {
+        title =[NSString stringWithFormat:@"%i", value];
+    }
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+}
+
+
 - (void)setValueatRow:(int)row column:(int)column to:(int)value {
     UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
-    [button setTitle:[NSString stringWithFormat:@"%i", value] forState:UIControlStateNormal];
+    NSString* title;
+    if (value == 0) {
+        title = @"";
+    }
+    else {
+        title =[NSString stringWithFormat:@"%i", value];
+    }
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:16]];
 }
 
 - (void) setTarget:(id)target action:(SEL)action {

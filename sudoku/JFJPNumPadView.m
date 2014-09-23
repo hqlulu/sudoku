@@ -33,7 +33,7 @@
                                             separationDistance, buttonSize,
                                             buttonSize + 2*separationDistance);
             UIButton *button = [[UIButton alloc] initWithFrame:buttonFrame];
-            button.backgroundColor = [UIColor orangeColor];
+            button.backgroundColor = [UIColor grayColor];
             [self addSubview:button];
             NSString *title;
             [button setTag:i];
@@ -44,6 +44,7 @@
                 title = [NSString stringWithFormat:@"%d", i];
             }
             [button setTitle:title forState:UIControlStateNormal];
+            [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
             [button setShowsTouchWhenHighlighted:YES];
             [button addTarget:self action:@selector(cellSelected:)
              forControlEvents:UIControlEventTouchUpInside];
