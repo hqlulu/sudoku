@@ -47,13 +47,13 @@
                 CGRect buttonFrame = CGRectMake(currentX,currentY,buttonSize,buttonSize);
                 
                 // Create buttons
-                UIButton* _button = [[UIButton alloc] initWithFrame:buttonFrame];
-                _button.backgroundColor = [UIColor grayColor];
-                [self addSubview:_button];
-                [_button setTag:9*i + j];
-                [_button setShowsTouchWhenHighlighted:YES];
-                [_button addTarget:self action:@selector(cellSelected:) forControlEvents:UIControlEventTouchUpInside];
-                [currentRow insertObject:_button atIndex:j];
+                UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+                button.backgroundColor = [UIColor grayColor];
+                [self addSubview:button];
+                [button setTag:9*i + j];
+                [button addTarget:self action:@selector(cellSelected:)
+                 forControlEvents:UIControlEventTouchUpInside];
+                [currentRow insertObject:button atIndex:j];
                 
                 // Update position variables
                 if (j % 3 == 2) {
@@ -77,15 +77,20 @@
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
     [_target performSelector:_action
-                  withObject:[NSNumber numberWithInt:tempButton.tag/9]
-                  withObject:[NSNumber numberWithInt:tempButton.tag%9]];
+             withObject:[NSNumber numberWithInt:tempButton.tag/9]
+             withObject:[NSNumber numberWithInt:tempButton.tag%9]];
 }
 
 - (void)initValueatRow:(int)row column:(int)column to:(int)value {
+    NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
+    NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
+    
     UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
     NSString* title;
     if (value == 0) {
         title = @"";
+        [button setShowsTouchWhenHighlighted:YES];
     }
     else {
         title =[NSString stringWithFormat:@"%i", value];
@@ -97,6 +102,10 @@
 
 
 - (void)setValueatRow:(int)row column:(int)column to:(int)value {
+    NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
+    NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
+    
     UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
     NSString* title;
     if (value == 0) {

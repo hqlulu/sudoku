@@ -57,8 +57,6 @@
     _gridModel = [[JFJPGridModel alloc] init];
     [_gridModel generateGrid];
     
-    
-    
     [self setGridViewValues];
     
 }
@@ -67,9 +65,7 @@
     for(int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
             int value = [_gridModel getValueAtRow:i column:j];
-            if (value != 0) {
-                [_gridView initValueatRow:i column:j to:value];
-            }
+            [_gridView initValueatRow:i column:j to:value];
         }
     }
     
@@ -78,6 +74,10 @@
 - (void)gridCellSelectedatRow:(NSNumber*)objectRow column:(NSNumber*)objectColumn {
     int cellRow = [objectRow integerValue];
     int cellColumn = [objectColumn integerValue];
+    
+    NSAssert(0 <= cellRow && cellRow <= 8, @"Invalid row: %d", cellRow);
+    NSAssert(0 <= cellColumn && cellColumn <= 8, @"Invalid column: %d", cellColumn);
+    
     int selectedNumber = [_numPadView getCurrentValue];
     if ([_gridModel isMutableAtRow:cellRow column:cellColumn] &&
         [_gridModel isConsistentAtRow:cellRow column:cellColumn for:selectedNumber]) {
