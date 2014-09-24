@@ -23,6 +23,8 @@
 		0303ABED19C25D1A00888433 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 0303ABEB19C25D1A00888433 /* InfoPlist.strings */; };
 		0303ABEF19C25D1A00888433 /* sudokuTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABEE19C25D1A00888433 /* sudokuTests.m */; };
 		0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABF919C376F400888433 /* JFJPGridView.m */; };
+		034D547619CCAFAC00B703E9 /* JFJPGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D547519CCAFAC00B703E9 /* JFJPGridModel.m */; };
+		034D547919CFC5EC00B703E9 /* JFJPNumPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +60,10 @@
 		0303ABEE19C25D1A00888433 /* sudokuTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = sudokuTests.m; sourceTree = "<group>"; };
 		0303ABF819C376F400888433 /* JFJPGridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPGridView.h; sourceTree = "<group>"; };
 		0303ABF919C376F400888433 /* JFJPGridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridView.m; sourceTree = "<group>"; };
+		034D547419CCAFAC00B703E9 /* JFJPGridModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPGridModel.h; sourceTree = "<group>"; };
+		034D547519CCAFAC00B703E9 /* JFJPGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridModel.m; sourceTree = "<group>"; };
+		034D547719CFC5EC00B703E9 /* JFJPNumPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPNumPadView.h; sourceTree = "<group>"; };
+		034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPNumPadView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +131,10 @@
 				0303ABD919C25D1A00888433 /* JFJPViewController.m */,
 				0303ABF819C376F400888433 /* JFJPGridView.h */,
 				0303ABF919C376F400888433 /* JFJPGridView.m */,
+				034D547719CFC5EC00B703E9 /* JFJPNumPadView.h */,
+				034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */,
+				034D547419CCAFAC00B703E9 /* JFJPGridModel.h */,
+				034D547519CCAFAC00B703E9 /* JFJPGridModel.m */,
 				0303ABDB19C25D1A00888433 /* Images.xcassets */,
 				0303ABC719C25D1A00888433 /* Supporting Files */,
 			);
@@ -260,9 +270,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0303ABD119C25D1A00888433 /* JFJPAppDelegate.m in Sources */,
+				034D547619CCAFAC00B703E9 /* JFJPGridModel.m in Sources */,
 				0303ABDA19C25D1A00888433 /* JFJPViewController.m in Sources */,
 				0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */,
 				0303ABCD19C25D1A00888433 /* main.m in Sources */,
+				034D547919CFC5EC00B703E9 /* JFJPNumPadView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

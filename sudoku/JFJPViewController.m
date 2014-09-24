@@ -8,23 +8,18 @@
 
 #import "JFJPViewController.h"
 #import "JFJPGridView.h"
+#import "JFJPNumPadView.h"
+#import "JFJPGridModel.h"
 
-int initialGrid[9][9]={
-    {7,0,0,4,2,0,0,0,9},
-    {0,0,9,5,0,0,0,0,4},
-    {0,2,0,6,9,0,5,0,0},
-    {6,5,0,0,0,0,4,3,0},
-    {0,8,0,0,0,6,0,0,7},
-    {0,1,0,0,4,5,6,0,0},
-    {0,0,0,8,6,0,0,0,2},
-    {3,4,0,9,0,0,1,0,0},
-    {8,0,0,3,0,2,7,4,0}
-};
+
 
 
 @interface JFJPViewController () {
     
     JFJPGridView* _gridView;
+    JFJPGridModel* _gridModel;
+    JFJPNumPadView* _numPadView;
+    
 }
 
 @end
@@ -48,20 +43,49 @@ int initialGrid[9][9]={
     _gridView = [[JFJPGridView alloc] initWithFrame:gridFrame];
     _gridView.backgroundColor = [UIColor blackColor];
     [self.view addSubview:_gridView];
+    [_gridView setTarget:self action:@selector(gridCellSelectedatRow:column:)];
     
-    [self setInitialGrid];
+    // Create numpad frame.
+    CGRect numpadFrame = CGRectMake(x, y+size*10/9, size, size/9);
+    
+    // Create numpad view
+    _numPadView = [[JFJPNumPadView alloc] initWithFrame:numpadFrame];
+    _numPadView.backgroundColor = [UIColor blackColor];
+    [self.view addSubview:_numPadView];
+    
+    // Create grid model
+    _gridModel = [[JFJPGridModel alloc] init];
+    [_gridModel generateGrid];
+    
+    [self setGridViewValues];
     
 }
 
-- (void)setInitialGrid {
+- (void)setGridViewValues {
     for(int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
-            if (initialGrid[i][j] != 0) {
-                [_gridView setCellatRow:i andColumn:j toValue:initialGrid[i][j]];
-            }
+            int value = [_gridModel getValueAtRow:i column:j];
+            [_gridView initValueatRow:i column:j to:value];
         }
     }
     
+}
+
+- (void)gridCellSelectedatRow:(NSNumber*)objectRow column:(NSNumber*)objectColumn {
+    int cellRow = [objectRow integerValue];
+    int cellColumn = [objectColumn integerValue];
+    
+    NSAssert(0 <= cellRow && cellRow <= 8, @"Invalid row: %d", cellRow);
+    NSAssert(0 <= cellColumn && cellColumn <= 8, @"Invalid column: %d", cellColumn);
+    
+    int selectedNumber = [_numPadView getCurrentValue];
+    if ([_gridModel isMutableAtRow:cellRow column:cellColumn] &&
+        [_gridModel isConsistentAtRow:cellRow column:cellColumn for:selectedNumber]) {
+        
+        // Update the model and the view
+        [_gridModel setValueAtRow:cellRow column:cellColumn to:selectedNumber];
+        [_gridView setValueatRow:cellRow column:cellColumn to:selectedNumber];
+    }
 }
 
 - (void)didReceiveMemoryWarning

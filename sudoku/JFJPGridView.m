@@ -9,7 +9,9 @@
 #import "JFJPGridView.h"
 
 @interface JFJPGridView (){
-    NSMutableArray*  _buttons;
+    NSMutableArray*  _cells;
+    id _target;
+    SEL _action;
 }
 
 @end
@@ -32,7 +34,7 @@
         
         CGFloat currentY = 2 * separationDistance;
         
-        _buttons = [[NSMutableArray alloc] initWithCapacity:9];
+        _cells = [[NSMutableArray alloc] initWithCapacity:9];
         
         
         for (int i = 0; i < 9; ++i) {
@@ -45,13 +47,13 @@
                 CGRect buttonFrame = CGRectMake(currentX,currentY,buttonSize,buttonSize);
                 
                 // Create buttons
-                UIButton* _button = [[UIButton alloc] initWithFrame:buttonFrame];
-                _button.backgroundColor = [UIColor orangeColor];
-                [self addSubview:_button];
-                [_button setTag:9*i + j];
-                [_button setShowsTouchWhenHighlighted:YES];
-                [_button addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                [currentRow insertObject:_button atIndex:j];
+                UIButton* button = [[UIButton alloc] initWithFrame:buttonFrame];
+                button.backgroundColor = [UIColor grayColor];
+                [self addSubview:button];
+                [button setTag:9*i + j];
+                [button addTarget:self action:@selector(cellSelected:)
+                 forControlEvents:UIControlEventTouchUpInside];
+                [currentRow insertObject:button atIndex:j];
                 
                 // Update position variables
                 if (j % 3 == 2) {
@@ -61,7 +63,7 @@
             }
             
             // Insert the new sub-array of buttons into the main array.
-            [_buttons insertObject:currentRow atIndex:i];
+            [_cells insertObject:currentRow atIndex:i];
             if (i % 3 == 2) {
                 currentY += separationDistance;
             }
@@ -71,15 +73,55 @@
     return self;
 }
 
-- (void)buttonPressed:(id)sender
-{
+- (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
+    [_target performSelector:_action
+             withObject:[NSNumber numberWithInt:tempButton.tag/9]
+             withObject:[NSNumber numberWithInt:tempButton.tag%9]];
 }
 
-- (void)setCellatRow:(int)row andColumn:(int)column toValue:(int)value {
-    UIButton* button = [[_buttons objectAtIndex:row] objectAtIndex: column];
-    [button setTitle:[NSString stringWithFormat:@"%i", value] forState:UIControlStateNormal];
+- (void)initValueatRow:(int)row column:(int)column to:(int)value {
+    NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
+    NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
+    
+    UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
+    NSString* title;
+    if (value == 0) {
+        title = @"";
+        [button setShowsTouchWhenHighlighted:YES];
+    }
+    else {
+        title =[NSString stringWithFormat:@"%i", value];
+    }
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont boldSystemFontOfSize:16]];
+}
+
+
+- (void)setValueatRow:(int)row column:(int)column to:(int)value {
+    NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
+    NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
+    NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
+    
+    UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
+    NSString* title;
+    if (value == 0) {
+        title = @"";
+    }
+    else {
+        title =[NSString stringWithFormat:@"%i", value];
+    }
+    [button setTitle:title forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+    [button.titleLabel setFont:[UIFont systemFontOfSize:16]];
+}
+
+- (void) setTarget:(id)target action:(SEL)action {
+    _target = target;
+    _action = action;
 }
 
 /*
