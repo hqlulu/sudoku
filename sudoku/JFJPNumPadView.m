@@ -33,7 +33,7 @@
                                             separationDistance, buttonSize,
                                             buttonSize + 2*separationDistance);
             UIButton *button = [[UIButton alloc] initWithFrame:buttonFrame];
-            button.backgroundColor = [UIColor grayColor];
+            [button setBackgroundColor: [UIColor grayColor]];
             [self addSubview:button];
             NSString *title;
             [button setTag:i];
@@ -45,7 +45,6 @@
             }
             [button setTitle:title forState:UIControlStateNormal];
             [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-            [button setShowsTouchWhenHighlighted:YES];
             [button addTarget:self action:@selector(cellSelected:)
              forControlEvents:UIControlEventTouchUpInside];
             [_cells insertObject:button atIndex:i];
@@ -58,7 +57,12 @@
 - (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
     NSLog(@"The button %d was pressed.", tempButton.tag);
+    
+    UIButton *oldButton = [_cells objectAtIndex:_currentValue];
+    [oldButton setBackgroundColor:[UIColor grayColor]];
     _currentValue = tempButton.tag;
+    UIButton *newButton = [_cells objectAtIndex:_currentValue];
+    [newButton setBackgroundColor:[UIColor redColor]];
 }
 
 - (int) getCurrentValue {

@@ -25,6 +25,10 @@
 		0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0303ABF919C376F400888433 /* JFJPGridView.m */; };
 		034D547619CCAFAC00B703E9 /* JFJPGridModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D547519CCAFAC00B703E9 /* JFJPGridModel.m */; };
 		034D547919CFC5EC00B703E9 /* JFJPNumPadView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */; };
+		034D547E19D76E5000B703E9 /* simple.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547A19D76E5000B703E9 /* simple.txt */; };
+		034D547F19D76E5000B703E9 /* expert.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547B19D76E5000B703E9 /* expert.txt */; };
+		034D548019D76E5000B703E9 /* intermediate.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547C19D76E5000B703E9 /* intermediate.txt */; };
+		034D548119D76E5000B703E9 /* easy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547D19D76E5000B703E9 /* easy.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +68,10 @@
 		034D547519CCAFAC00B703E9 /* JFJPGridModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridModel.m; sourceTree = "<group>"; };
 		034D547719CFC5EC00B703E9 /* JFJPNumPadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPNumPadView.h; sourceTree = "<group>"; };
 		034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPNumPadView.m; sourceTree = "<group>"; };
+		034D547A19D76E5000B703E9 /* simple.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = simple.txt; sourceTree = "<group>"; };
+		034D547B19D76E5000B703E9 /* expert.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = expert.txt; sourceTree = "<group>"; };
+		034D547C19D76E5000B703E9 /* intermediate.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = intermediate.txt; sourceTree = "<group>"; };
+		034D547D19D76E5000B703E9 /* easy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = easy.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +141,10 @@
 				0303ABF919C376F400888433 /* JFJPGridView.m */,
 				034D547719CFC5EC00B703E9 /* JFJPNumPadView.h */,
 				034D547819CFC5EC00B703E9 /* JFJPNumPadView.m */,
+				034D547A19D76E5000B703E9 /* simple.txt */,
+				034D547B19D76E5000B703E9 /* expert.txt */,
+				034D547C19D76E5000B703E9 /* intermediate.txt */,
+				034D547D19D76E5000B703E9 /* easy.txt */,
 				034D547419CCAFAC00B703E9 /* JFJPGridModel.h */,
 				034D547519CCAFAC00B703E9 /* JFJPGridModel.m */,
 				0303ABDB19C25D1A00888433 /* Images.xcassets */,
@@ -247,9 +259,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				034D548119D76E5000B703E9 /* easy.txt in Resources */,
 				0303ABD719C25D1A00888433 /* Main_iPad.storyboard in Resources */,
 				0303ABDC19C25D1A00888433 /* Images.xcassets in Resources */,
 				0303ABD419C25D1A00888433 /* Main_iPhone.storyboard in Resources */,
+				034D548019D76E5000B703E9 /* intermediate.txt in Resources */,
+				034D547E19D76E5000B703E9 /* simple.txt in Resources */,
+				034D547F19D76E5000B703E9 /* expert.txt in Resources */,
 				0303ABCB19C25D1A00888433 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
