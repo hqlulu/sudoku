@@ -13,13 +13,13 @@
 
 
 
-
 @interface JFJPViewController () {
     
     JFJPGridView* _gridView;
     JFJPGridModel* _gridModel;
     JFJPNumPadView* _numPadView;
-    
+    UIButton* _newGameButton;
+    int _difficulty;
 }
 
 @end
@@ -60,6 +60,17 @@
     [self setGridViewValues];
     
     
+    // Set up new game button
+    CGRect newGameButtonFrame = CGRectMake(x+size*3/10, y+size*12/9, size*4/10, size/9);
+    _newGameButton = [[UIButton alloc] initWithFrame:newGameButtonFrame];
+    _newGameButton.backgroundColor = [UIColor grayColor];
+    [_newGameButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
+    [_newGameButton addTarget:self action:@selector(confirmNewGame:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_newGameButton];
+    
+    _difficulty = 3;
+    
 }
 
 - (void)setGridViewValues {
@@ -88,6 +99,25 @@
         [_gridView setValueatRow:cellRow column:cellColumn to:selectedNumber];
     }
 }
+
+- (void)confirmNewGame:(id)sender {
+    
+    UIAlertView *confirmationDialogue = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    
+    [confirmationDialogue show];
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 1) {
+        [self startNewGame];
+    }
+}
+
+-(void)startNewGame {
+    [_gridModel generateGridofDifficulty:_difficulty];
+    [self setGridViewValues];
+}
+
 
 - (void)didReceiveMemoryWarning
 {
