@@ -10,7 +10,7 @@
 
 @interface JFJPGridModel : NSObject
 
-- (void) generateGrid;
+- (void) generateGridofDifficulty:(int)difficulty;
 - (int) getValueAtRow:(int)row column:(int)column;
 - (void) setValueAtRow:(int)row column:(int)column to:(int)value;
 - (bool) isMutableAtRow:(int)row column:(int)column;

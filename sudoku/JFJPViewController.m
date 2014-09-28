@@ -55,9 +55,10 @@
     
     // Create grid model
     _gridModel = [[JFJPGridModel alloc] init];
-    [_gridModel generateGrid];
+    [_gridModel generateGridofDifficulty:3];
     
     [self setGridViewValues];
+    
     
 }
 

@@ -7,32 +7,33 @@
 //
 
 #import "JFJPGridModel.h"
-
-int initialGrid[9][9]={
-    {7,0,0,4,2,0,0,0,9},
-    {0,0,9,5,0,0,0,0,4},
-    {0,2,0,6,9,0,5,0,0},
-    {6,5,0,0,0,0,4,3,0},
-    {0,8,0,0,0,6,0,0,7},
-    {0,1,0,0,4,5,6,0,0},
-    {0,0,0,8,6,0,0,0,2},
-    {3,4,0,9,0,0,1,0,0},
-    {8,0,0,3,0,2,7,4,0}
-};
+#import "JFJPGridGenerator.h"
 
 @interface JFJPGridModel (){
-    
     int _cells[9][9];
+    int _initialGrid[9][9];
+    JFJPGridGenerator *_gridGenerator;
 }
 
 @end
 
 @implementation JFJPGridModel
 
-- (void) generateGrid {
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        _gridGenerator = [[JFJPGridGenerator alloc] init];
+    }
+    return self;
+}
+
+- (void) generateGridofDifficulty:(int)difficulty{
+    NSArray *grid = [_gridGenerator getGridWithDifficulty:difficulty];
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
-            _cells[i][j] = initialGrid[i][j];
+            _cells[i][j] = [[[grid objectAtIndex:i] objectAtIndex:j] integerValue];
+            _initialGrid[i][j] = [[[grid objectAtIndex:i] objectAtIndex:j] integerValue];
         }
     }
 }
@@ -56,7 +57,7 @@ int initialGrid[9][9]={
     NSAssert(0 <= row && row <= 8, @"Invalid row: %d", row);
     NSAssert(0 <= column && column <= 8, @"Invalid column: %d", column);
     
-    return initialGrid[row][column] == 0;
+    return _initialGrid[row][column] == 0;
 }
 
 - (bool) isConsistentAtRow:(int)row column:(int)column for:(int)value {
