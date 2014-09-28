@@ -10,6 +10,7 @@
 #import "JFJPGridView.h"
 #import "JFJPNumPadView.h"
 #import "JFJPGridModel.h"
+#import "JFJPSettingsView.h"
 
 
 
@@ -18,8 +19,10 @@
     JFJPGridView* _gridView;
     JFJPGridModel* _gridModel;
     JFJPNumPadView* _numPadView;
+    JFJPSettingsView *_settingsView;
+    
+    UIButton *_settingsButton;
     UIButton* _newGameButton;
-    int _difficulty;
 }
 
 @end
@@ -66,10 +69,22 @@
     _newGameButton.backgroundColor = [UIColor grayColor];
     [_newGameButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
-    [_newGameButton addTarget:self action:@selector(confirmNewGame:) forControlEvents:UIControlEventTouchUpInside];
+    [_newGameButton addTarget:self action:@selector(confirmNewGame:)
+                    forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_newGameButton];
     
-    _difficulty = 3;
+    // Set up settings view and button
+    _settingsView = [[JFJPSettingsView alloc] initWithFrame:frame];
+    _settingsView.backgroundColor = [UIColor whiteColor];
+    [_settingsView setHidden:YES];
+    [self.view addSubview:_settingsView];
+    
+    CGRect settingsButtonFrame = CGRectMake(x, .8 * CGRectGetHeight(frame), size * .1, size * .1);
+    _settingsButton = [[UIButton alloc] initWithFrame:settingsButtonFrame];
+    _settingsButton.backgroundColor = [UIColor greenColor];
+    [_settingsButton addTarget:self action:@selector(showSettings:)
+                     forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_settingsButton];
     
 }
 
@@ -114,10 +129,13 @@
 }
 
 -(void)startNewGame {
-    [_gridModel generateGridofDifficulty:_difficulty];
+    [_gridModel generateGridofDifficulty:[_settingsView getDifficulty]];
     [self setGridViewValues];
 }
 
+-(void)showSettings:(id)sender {
+    [_settingsView setHidden:NO];
+}
 
 - (void)didReceiveMemoryWarning
 {

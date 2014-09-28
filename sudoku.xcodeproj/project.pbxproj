@@ -30,6 +30,7 @@
 		034D548019D76E5000B703E9 /* medium.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547C19D76E5000B703E9 /* medium.txt */; };
 		034D548119D76E5000B703E9 /* easy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547D19D76E5000B703E9 /* easy.txt */; };
 		034D548419D76F2800B703E9 /* JFJPGridGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D548319D76F2800B703E9 /* JFJPGridGenerator.m */; };
+		034D548719D8B64700B703E9 /* JFJPSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D548619D8B64700B703E9 /* JFJPSettingsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		034D547D19D76E5000B703E9 /* easy.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = easy.txt; sourceTree = "<group>"; };
 		034D548219D76F2800B703E9 /* JFJPGridGenerator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPGridGenerator.h; sourceTree = "<group>"; };
 		034D548319D76F2800B703E9 /* JFJPGridGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridGenerator.m; sourceTree = "<group>"; };
+		034D548519D8B64700B703E9 /* JFJPSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPSettingsView.h; sourceTree = "<group>"; };
+		034D548619D8B64700B703E9 /* JFJPSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPSettingsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +143,8 @@
 				0303ABD519C25D1A00888433 /* Main_iPad.storyboard */,
 				0303ABD819C25D1A00888433 /* JFJPViewController.h */,
 				0303ABD919C25D1A00888433 /* JFJPViewController.m */,
+				034D548519D8B64700B703E9 /* JFJPSettingsView.h */,
+				034D548619D8B64700B703E9 /* JFJPSettingsView.m */,
 				034D548219D76F2800B703E9 /* JFJPGridGenerator.h */,
 				034D548319D76F2800B703E9 /* JFJPGridGenerator.m */,
 				0303ABF819C376F400888433 /* JFJPGridView.h */,
@@ -293,6 +298,7 @@
 				0303ABD119C25D1A00888433 /* JFJPAppDelegate.m in Sources */,
 				034D548419D76F2800B703E9 /* JFJPGridGenerator.m in Sources */,
 				034D547619CCAFAC00B703E9 /* JFJPGridModel.m in Sources */,
+				034D548719D8B64700B703E9 /* JFJPSettingsView.m in Sources */,
 				0303ABDA19C25D1A00888433 /* JFJPViewController.m in Sources */,
 				0303ABFA19C376F400888433 /* JFJPGridView.m in Sources */,
 				0303ABCD19C25D1A00888433 /* main.m in Sources */,
