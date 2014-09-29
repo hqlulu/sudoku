@@ -11,6 +11,7 @@
 #import "JFJPNumPadView.h"
 #import "JFJPGridModel.h"
 #import "JFJPSettingsView.h"
+#import "JFJPInfoView.h"
 
 
 
@@ -20,8 +21,10 @@
     JFJPGridModel* _gridModel;
     JFJPNumPadView* _numPadView;
     JFJPSettingsView *_settingsView;
+    JFJPInfoView *_infoView;
     
     UIButton *_settingsButton;
+    UIButton *_infoButton;
     UIButton* _newGameButton;
 }
 
@@ -69,7 +72,8 @@
     _newGameButton.backgroundColor = [UIColor grayColor];
     [_newGameButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     [_newGameButton setTitle:@"New Game" forState:UIControlStateNormal];
-    [_newGameButton addTarget:self action:@selector(confirmNewGame:)
+    [_newGameButton addTarget:self
+                    action:@selector(confirmNewGame:)
                     forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_newGameButton];
     
@@ -82,9 +86,23 @@
     CGRect settingsButtonFrame = CGRectMake(x, .9 * CGRectGetHeight(frame), size * .1, size * .1);
     _settingsButton = [[UIButton alloc] initWithFrame:settingsButtonFrame];
     [_settingsButton setImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
-    [_settingsButton addTarget:self action:@selector(showSettings:)
+    [_settingsButton addTarget:self
+                     action:@selector(showSettings:)
                      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_settingsButton];
+    
+    // Set up info view and button
+    _infoView = [[JFJPInfoView alloc] initWithFrame:frame];
+    _infoView.backgroundColor = [UIColor whiteColor];
+    [_infoView setHidden:YES];
+    [self.view addSubview:_infoView];
+    
+    CGRect infoButtonFrame = CGRectMake(x + .9*size, .9 * CGRectGetHeight(frame), size * .1, size * .1);
+    _infoButton = [[UIButton alloc] initWithFrame:infoButtonFrame];
+    [_infoButton setImage:[UIImage imageNamed:@"infobutton.png"] forState:UIControlStateNormal];
+    [_infoButton addTarget:self action:@selector(showInfo:)
+              forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:_infoButton];
     
 }
 
@@ -146,6 +164,17 @@
     [self.view.layer addAnimation:transition forKey:nil];
     [self.view bringSubviewToFront:_settingsView];
     _settingsView.hidden = NO;
+}
+
+-(void)showInfo:(id)sender {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [self.view.layer addAnimation:transition forKey:nil];
+    [self.view bringSubviewToFront:_infoView];
+    _infoView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning
