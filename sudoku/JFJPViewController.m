@@ -13,7 +13,7 @@
 #import "JFJPSettingsView.h"
 #import "JFJPInfoView.h"
 
-
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface JFJPViewController () {
     
@@ -26,6 +26,8 @@
     UIButton *_settingsButton;
     UIButton *_infoButton;
     UIButton* _newGameButton;
+    
+    SystemSoundID clapSound;
 }
 
 @end
@@ -130,6 +132,14 @@
         // Update the model and the view
         [_gridModel setValueAtRow:cellRow column:cellColumn to:selectedNumber];
         [_gridView setValueatRow:cellRow column:cellColumn to:selectedNumber];
+        
+        // Play a sound if we win
+        if ([_gridModel isComplete]) {
+            NSString *clapPath = [[NSBundle mainBundle] pathForResource:@"Applause" ofType:@"wav"];
+            NSURL *clapURL = [NSURL fileURLWithPath:clapPath];
+            AudioServicesCreateSystemSoundID((__bridge CFURLRef)clapURL, &clapSound);
+            AudioServicesPlaySystemSound(clapSound);
+        }
     }
 }
 
@@ -183,6 +193,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
+- (void) dealloc {
+    AudioServicesDisposeSystemSoundID(clapSound);
+}
 @end

@@ -15,5 +15,6 @@
 - (void) setValueAtRow:(int)row column:(int)column to:(int)value;
 - (bool) isMutableAtRow:(int)row column:(int)column;
 - (bool) isConsistentAtRow:(int)row column:(int)column for:(int)value;
+- (bool) isComplete;
 
 @end
