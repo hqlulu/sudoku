@@ -13,5 +13,6 @@
 - (void) initValueatRow:(int)row column:(int)column to:(int)value;
 - (void) setValueatRow:(int)row column:(int)column to:(int)value;
 - (void) setTarget:(id)target action:(SEL)action;
+- (void) highlightInconsistent:(int)code atRow:(int)row column:(int)column;
 
 @end

@@ -125,9 +125,12 @@
     NSAssert(0 <= cellRow && cellRow <= 8, @"Invalid row: %d", cellRow);
     NSAssert(0 <= cellColumn && cellColumn <= 8, @"Invalid column: %d", cellColumn);
     
+    // Get code indicating whether entry is consistent, and if inconsistent,
+    // what it is inconsistent with.
     int selectedNumber = [_numPadView getCurrentValue];
-    if ([_gridModel isMutableAtRow:cellRow column:cellColumn] &&
-        [_gridModel isConsistentAtRow:cellRow column:cellColumn for:selectedNumber]) {
+    int consistencyCode = [_gridModel isConsistentAtRow:cellRow column:cellColumn for:selectedNumber];
+    
+    if ([_gridModel isMutableAtRow:cellRow column:cellColumn] && consistencyCode == 0) {
         
         // Update the model and the view
         [_gridModel setValueAtRow:cellRow column:cellColumn to:selectedNumber];
@@ -140,6 +143,9 @@
             AudioServicesCreateSystemSoundID((__bridge CFURLRef)clapURL, &clapSound);
             AudioServicesPlaySystemSound(clapSound);
         }
+    }
+    else if ([_gridModel isMutableAtRow:cellRow column:cellColumn] && consistencyCode != 0) {
+        [_gridView highlightInconsistent:consistencyCode atRow:cellRow column:cellColumn];
     }
 }
 

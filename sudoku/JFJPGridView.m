@@ -153,7 +153,59 @@
 
 - (void) buttonUnhighlight:(id)sender {
     UIButton *button = (UIButton*) sender;
-    [button setBackgroundColor:[UIColor grayColor]];
+    if ([button backgroundColor] == [UIColor greenColor]) {
+        [button setBackgroundColor:[UIColor grayColor]];
+    }
+}
+
+- (void) highlightInconsistent:(int)code atRow:(int)row column:(int)column {
+    
+    
+    [self highlightInconsistent:code atRow:row column:column toColor:[UIColor redColor]];
+//    [self highlightInconsistent:code atRow:row column:column toColor:[UIColor grayColor]];
+    
+}
+
+
+- (void) highlightInconsistent:(int)code atRow:(int)row column:(int)column toColor:(UIColor*)color {
+    
+    // What we highlight is based on the code we're passed.
+    // For meaning of values, see the gridmodel.
+    
+    // Inconsistent row
+    if (code / 100 == 1) {
+        NSMutableArray *gridRow = [_cells objectAtIndex:row];
+        for (int i = 0; i < 9; ++i) {
+            [[gridRow objectAtIndex:i] setBackgroundColor:color];
+            [UIView animateWithDuration:1.0
+                    delay:0.0
+                    options: UIViewAnimationOptionAutoreverse
+                    animations:^{[[gridRow objectAtIndex:i] setBackgroundColor:[UIColor grayColor]];}
+                    completion:^(BOOL finished){}];
+        }
+    }
+    
+    // Inconsistent column
+    if ((code % 100) / 10 == 1) {
+        for (int i = 0; i < 9; ++i) {
+            NSMutableArray *gridRow = [_cells objectAtIndex:i];
+            [[gridRow objectAtIndex:column] setBackgroundColor:color];
+        }
+    }
+    
+    // Inconsistent subgrid
+    if (code % 10 == 1) {
+        int topLeftRow = 3 * (row / 3);
+        int topLeftColumn = 3 * (column / 3);
+        
+        for (int i = topLeftRow; i < topLeftRow + 3; ++i) {
+            NSMutableArray *gridRow = [_cells objectAtIndex:i];
+            for (int j = topLeftColumn; j < topLeftColumn + 3; ++j) {
+                [[gridRow objectAtIndex:j] setBackgroundColor:color];
+            }
+        }
+    }
+    
 }
 
 /*
