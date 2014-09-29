@@ -22,28 +22,41 @@
         // Make size constants
         CGFloat x = CGRectGetWidth(frame)*.1;
         CGFloat y = CGRectGetHeight(frame)*.1;
-        CGFloat size = MIN(CGRectGetWidth(frame), CGRectGetHeight(frame))*.80;
-        CGFloat settingWidth = size*.5;
-        CGFloat settingHeight = size*.2;
+        CGFloat settingWidth = CGRectGetWidth(frame)*.8;
+        CGFloat settingHeight = CGRectGetHeight(frame)*.1;
         
         //Make difficulty label
-        CGRect difficultyLabelFrame = CGRectMake(x,y,settingWidth,settingHeight);
+        CGRect difficultyLabelFrame = CGRectMake(x,y,settingWidth/2,settingHeight);
         UILabel *difficultyLabel = [[UILabel alloc] initWithFrame:difficultyLabelFrame];
         [difficultyLabel setText:@"Difficulty:"];
+        [difficultyLabel setTextAlignment:NSTextAlignmentCenter];
         [difficultyLabel setTextColor:[UIColor blackColor]];
         
         [self addSubview:difficultyLabel];
         
         // Make difficulty button
-        CGRect difficultyButtonFrame = CGRectMake(x+settingWidth, y, settingWidth, settingHeight);
+        CGRect difficultyButtonFrame = CGRectMake(x+settingWidth/2, y, settingWidth/2, settingHeight);
         UIButton *difficultyButton = [[UIButton alloc] initWithFrame:difficultyButtonFrame];
         [difficultyButton setTitle:@"Beginner" forState:UIControlStateNormal];
         [difficultyButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [difficultyButton setBackgroundColor:[UIColor grayColor]];
-        [difficultyButton addTarget:self action:@selector(changeDifficulty:)
-                   forControlEvents:UIControlEventTouchUpInside];
+        [difficultyButton addTarget:self
+                          action:@selector(changeDifficulty:)
+                          forControlEvents:UIControlEventTouchUpInside];
         
         [self addSubview:difficultyButton];
+        
+        // Make close settings button
+        CGRect closeButtonFrame = CGRectMake(x, y+2*settingHeight, settingWidth, settingHeight);
+        UIButton *closeSettingsButton = [[UIButton alloc] initWithFrame:closeButtonFrame];
+        [closeSettingsButton setTitle:@"Close Settings" forState:UIControlStateNormal];
+        [closeSettingsButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [closeSettingsButton setBackgroundColor:[UIColor grayColor]];
+        [closeSettingsButton addTarget:self
+                             action:@selector(closeSettings:)
+                             forControlEvents:UIControlEventTouchUpInside];
+        
+        [self addSubview:closeSettingsButton];
 
     }
     return self;
@@ -75,6 +88,16 @@
 
 -(int) getDifficulty {
     return _difficulty;
+}
+
+-(void) closeSettings:(id)sender {
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [self.layer addAnimation:transition forKey:nil];
+    [self setHidden:YES];
 }
 
 /*

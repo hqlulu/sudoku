@@ -79,9 +79,9 @@
     [_settingsView setHidden:YES];
     [self.view addSubview:_settingsView];
     
-    CGRect settingsButtonFrame = CGRectMake(x, .8 * CGRectGetHeight(frame), size * .1, size * .1);
+    CGRect settingsButtonFrame = CGRectMake(x, .9 * CGRectGetHeight(frame), size * .1, size * .1);
     _settingsButton = [[UIButton alloc] initWithFrame:settingsButtonFrame];
-    _settingsButton.backgroundColor = [UIColor greenColor];
+    [_settingsButton setImage:[UIImage imageNamed:@"settings.png"] forState:UIControlStateNormal];
     [_settingsButton addTarget:self action:@selector(showSettings:)
                      forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_settingsButton];
@@ -117,7 +117,11 @@
 
 - (void)confirmNewGame:(id)sender {
     
-    UIAlertView *confirmationDialogue = [[UIAlertView alloc] initWithTitle:@"New Game" message:@"Are you sure you want to start a new game?" delegate:self cancelButtonTitle:@"No" otherButtonTitles:@"Yes", nil];
+    UIAlertView *confirmationDialogue = [[UIAlertView alloc] initWithTitle:@"New Game"
+                                          message:@"Are you sure you want to start a new game?"
+                                          delegate:self
+                                          cancelButtonTitle:@"No"
+                                          otherButtonTitles:@"Yes",nil];
     
     [confirmationDialogue show];
 }
@@ -134,7 +138,14 @@
 }
 
 -(void)showSettings:(id)sender {
-    [_settingsView setHidden:NO];
+    CATransition *transition = [CATransition animation];
+    transition.duration = 0.5;
+    transition.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseInEaseOut];
+    transition.type = kCATransitionFade;
+    transition.delegate = self;
+    [self.view.layer addAnimation:transition forKey:nil];
+    [self.view bringSubviewToFront:_settingsView];
+    _settingsView.hidden = NO;
 }
 
 - (void)didReceiveMemoryWarning

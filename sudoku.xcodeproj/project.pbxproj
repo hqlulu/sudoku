@@ -31,6 +31,7 @@
 		034D548119D76E5000B703E9 /* easy.txt in Resources */ = {isa = PBXBuildFile; fileRef = 034D547D19D76E5000B703E9 /* easy.txt */; };
 		034D548419D76F2800B703E9 /* JFJPGridGenerator.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D548319D76F2800B703E9 /* JFJPGridGenerator.m */; };
 		034D548719D8B64700B703E9 /* JFJPSettingsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D548619D8B64700B703E9 /* JFJPSettingsView.m */; };
+		034D548B19D8FF7B00B703E9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D548A19D8FF7B00B703E9 /* settings.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		034D548319D76F2800B703E9 /* JFJPGridGenerator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPGridGenerator.m; sourceTree = "<group>"; };
 		034D548519D8B64700B703E9 /* JFJPSettingsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPSettingsView.h; sourceTree = "<group>"; };
 		034D548619D8B64700B703E9 /* JFJPSettingsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPSettingsView.m; sourceTree = "<group>"; };
+		034D548A19D8FF7B00B703E9 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = settings.png; path = ../settings.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,6 +157,7 @@
 				034D547B19D76E5000B703E9 /* expert.txt */,
 				034D547C19D76E5000B703E9 /* medium.txt */,
 				034D547D19D76E5000B703E9 /* easy.txt */,
+				034D548A19D8FF7B00B703E9 /* settings.png */,
 				034D547419CCAFAC00B703E9 /* JFJPGridModel.h */,
 				034D547519CCAFAC00B703E9 /* JFJPGridModel.m */,
 				0303ABDB19C25D1A00888433 /* Images.xcassets */,
@@ -271,6 +274,7 @@
 			files = (
 				034D548119D76E5000B703E9 /* easy.txt in Resources */,
 				0303ABD719C25D1A00888433 /* Main_iPad.storyboard in Resources */,
+				034D548B19D8FF7B00B703E9 /* settings.png in Resources */,
 				0303ABDC19C25D1A00888433 /* Images.xcassets in Resources */,
 				0303ABD419C25D1A00888433 /* Main_iPhone.storyboard in Resources */,
 				034D548019D76E5000B703E9 /* medium.txt in Resources */,
