@@ -62,7 +62,7 @@
     [oldButton setBackgroundColor:[UIColor grayColor]];
     _currentValue = tempButton.tag;
     UIButton *newButton = [_cells objectAtIndex:_currentValue];
-    [newButton setBackgroundColor:[UIColor redColor]];
+    [newButton setBackgroundColor:[UIColor greenColor]];
 }
 
 - (int) getCurrentValue {

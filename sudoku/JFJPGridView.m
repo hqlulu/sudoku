@@ -90,10 +90,27 @@
     NSString* title;
     if (value == 0) {
         title = @"";
-        [button setShowsTouchWhenHighlighted:YES];
+        [button addTarget:self
+                action:@selector(buttonHighlightGood:)
+                forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self
+                action:@selector(buttonUnhighlight:)
+                forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self
+                action:@selector(buttonUnhighlight:)
+                forControlEvents:UIControlEventTouchUpOutside];
     }
     else {
         title =[NSString stringWithFormat:@"%i", value];
+        [button addTarget:self
+                action:@selector(buttonHighlightBad:)
+                forControlEvents:UIControlEventTouchDown];
+        [button addTarget:self
+                action:@selector(buttonUnhighlight:)
+                forControlEvents:UIControlEventTouchUpInside];
+        [button addTarget:self
+                action:@selector(buttonUnhighlight:)
+                forControlEvents:UIControlEventTouchUpOutside];
     }
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -122,6 +139,21 @@
 - (void) setTarget:(id)target action:(SEL)action {
     _target = target;
     _action = action;
+}
+
+- (void) buttonHighlightGood:(id)sender {
+    UIButton *button = (UIButton*) sender;
+    [button setBackgroundColor:[UIColor greenColor]];
+}
+
+- (void) buttonHighlightBad:(id)sender {
+    UIButton *button = (UIButton*) sender;
+    [button setBackgroundColor:[UIColor redColor]];
+}
+
+- (void) buttonUnhighlight:(id)sender {
+    UIButton *button = (UIButton*) sender;
+    [button setBackgroundColor:[UIColor grayColor]];
 }
 
 /*
