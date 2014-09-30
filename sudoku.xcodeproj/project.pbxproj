@@ -228,6 +228,7 @@
 				0303ABB919C25D1A00888433 /* Sources */,
 				0303ABBA19C25D1A00888433 /* Frameworks */,
 				0303ABBB19C25D1A00888433 /* Resources */,
+				034D54BB19DA870800B703E9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -322,6 +323,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		034D54BB19DA870800B703E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = XcodeCoverage/exportenv.sh;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0303ABB919C25D1A00888433 /* Sources */ = {
@@ -471,6 +488,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_GENERATE_TEST_COVERAGE_FILES = YES;
+				GCC_INSTRUMENT_PROGRAM_FLOW_ARCS = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sudoku/sudoku-Prefix.pch";
 				INFOPLIST_FILE = "sudoku/sudoku-Info.plist";
@@ -484,6 +503,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_GENERATE_TEST_COVERAGE_FILES = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "sudoku/sudoku-Prefix.pch";
 				INFOPLIST_FILE = "sudoku/sudoku-Info.plist";

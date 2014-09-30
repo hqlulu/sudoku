@@ -17,15 +17,15 @@
 
 @interface JFJPViewController () {
     
-    JFJPGridView* _gridView;
-    JFJPGridModel* _gridModel;
-    JFJPNumPadView* _numPadView;
+    JFJPGridView *_gridView;
+    JFJPGridModel *_gridModel;
+    JFJPNumPadView *_numPadView;
     JFJPSettingsView *_settingsView;
     JFJPInfoView *_infoView;
     
     UIButton *_settingsButton;
     UIButton *_infoButton;
-    UIButton* _newGameButton;
+    UIButton *_newGameButton;
     
     SystemSoundID clapSound;
 }
@@ -63,7 +63,7 @@
     
     // Create grid model
     _gridModel = [[JFJPGridModel alloc] init];
-    [_gridModel generateGridofDifficulty:3];
+    [_gridModel generateGridofDifficulty:0];
     
     [self setGridViewValues];
     
