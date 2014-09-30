@@ -67,7 +67,7 @@
     
     // A value of 0 is always consistent (it blanks the cell).
     if (value == 0) {
-        return YES;
+        return 0;
     }
     
     // Most significant digit indicates row, middle indicates column, least indicates subgrid

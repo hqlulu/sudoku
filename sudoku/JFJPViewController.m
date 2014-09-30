@@ -106,6 +106,10 @@
               forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:_infoButton];
     
+    // Create Applause Sound for Win
+    NSString *clapPath = [[NSBundle mainBundle] pathForResource:@"Applause" ofType:@"wav"];
+    NSURL *clapURL = [NSURL fileURLWithPath:clapPath];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)clapURL, &clapSound);
 }
 
 - (void)setGridViewValues {
@@ -138,13 +142,10 @@
         
         // Play a sound if we win
         if ([_gridModel isComplete]) {
-            NSString *clapPath = [[NSBundle mainBundle] pathForResource:@"Applause" ofType:@"wav"];
-            NSURL *clapURL = [NSURL fileURLWithPath:clapPath];
-            AudioServicesCreateSystemSoundID((__bridge CFURLRef)clapURL, &clapSound);
             AudioServicesPlaySystemSound(clapSound);
         }
     }
-    else if ([_gridModel isMutableAtRow:cellRow column:cellColumn] && consistencyCode != 0) {
+    if ([_gridModel isMutableAtRow:cellRow column:cellColumn]) {
         [_gridView highlightInconsistent:consistencyCode atRow:cellRow column:cellColumn];
     }
 }

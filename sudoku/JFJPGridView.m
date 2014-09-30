@@ -8,10 +8,17 @@
 
 #import "JFJPGridView.h"
 
+#import <AudioToolbox/AudioToolbox.h>
+
 @interface JFJPGridView (){
     NSMutableArray*  _cells;
     id _target;
     SEL _action;
+    
+    SystemSoundID clickSound;
+    SystemSoundID eraseSound;
+    SystemSoundID beepSound;
+    SystemSoundID tromboneSound;
 }
 
 @end
@@ -51,8 +58,9 @@
                 button.backgroundColor = [UIColor grayColor];
                 [self addSubview:button];
                 [button setTag:9*i + j];
-                [button addTarget:self action:@selector(cellSelected:)
-                 forControlEvents:UIControlEventTouchUpInside];
+                [button addTarget:self
+                        action:@selector(cellSelected:)
+                        forControlEvents:UIControlEventTouchUpInside];
                 [currentRow insertObject:button atIndex:j];
                 
                 // Update position variables
@@ -69,13 +77,29 @@
             }
             currentY += buttonSize + separationDistance;
         }
+        [self setUpSound:@"erase" forLocation:&eraseSound];
+        [self setUpSound:@"click" forLocation:&clickSound];
+        
+        // Taken from http://soundbible.com/1806-Censored-Beep.html
+        // Under creative commons attribution 3.0
+        [self setUpSound:@"beep" forLocation:&beepSound];
+        
+        // Taken from http://soundbible.com/1830-Sad-Trombone.html
+        // Under creative commons attribution 3.0
+        [self setUpSound:@"trombone" forLocation:&tromboneSound];
     }
     return self;
 }
 
+- (void)setUpSound:(NSString*)fileName forLocation:(SystemSoundID*)location {
+    NSString *path = [[NSBundle mainBundle] pathForResource:fileName ofType:@"wav"];
+    NSURL *URL = [NSURL fileURLWithPath:path];
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)URL, location);
+}
+
 - (void)cellSelected:(id)sender {
     UIButton* tempButton = (UIButton*) sender;
-    NSLog(@"The button at row %i and column %i was pressed.", tempButton.tag/9, tempButton.tag%9);
+    
     [_target performSelector:_action
              withObject:[NSNumber numberWithInt:tempButton.tag/9]
              withObject:[NSNumber numberWithInt:tempButton.tag%9]];
@@ -87,18 +111,17 @@
     NSAssert(0 <= value && value <= 9, @"Invalid value: %d", value);
     
     UIButton* button = [[_cells objectAtIndex:row] objectAtIndex: column];
+    
+    [button removeTarget:nil action:NULL forControlEvents:UIControlEventAllEvents];
+    [button addTarget:self
+            action:@selector(cellSelected:)
+            forControlEvents:UIControlEventTouchUpInside];
     NSString* title;
     if (value == 0) {
         title = @"";
         [button addTarget:self
                 action:@selector(buttonHighlightGood:)
                 forControlEvents:UIControlEventTouchDown];
-        [button addTarget:self
-                action:@selector(buttonUnhighlight:)
-                forControlEvents:UIControlEventTouchUpInside];
-        [button addTarget:self
-                action:@selector(buttonUnhighlight:)
-                forControlEvents:UIControlEventTouchUpOutside];
     }
     else {
         title =[NSString stringWithFormat:@"%i", value];
@@ -127,9 +150,11 @@
     NSString* title;
     if (value == 0) {
         title = @"";
+        AudioServicesPlaySystemSound(eraseSound);
     }
     else {
         title =[NSString stringWithFormat:@"%i", value];
+        AudioServicesPlaySystemSound(clickSound);
     }
     [button setTitle:title forState:UIControlStateNormal];
     [button setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
@@ -149,39 +174,34 @@
 - (void) buttonHighlightBad:(id)sender {
     UIButton *button = (UIButton*) sender;
     [button setBackgroundColor:[UIColor redColor]];
+    
+    AudioServicesPlaySystemSound(beepSound);
 }
 
 - (void) buttonUnhighlight:(id)sender {
     UIButton *button = (UIButton*) sender;
-    if ([button backgroundColor] == [UIColor greenColor]) {
-        [button setBackgroundColor:[UIColor grayColor]];
-    }
+    [button setBackgroundColor:[UIColor grayColor]];
 }
 
 - (void) highlightInconsistent:(int)code atRow:(int)row column:(int)column {
     
-    
-    [self highlightInconsistent:code atRow:row column:column toColor:[UIColor redColor]];
-//    [self highlightInconsistent:code atRow:row column:column toColor:[UIColor grayColor]];
-    
-}
-
-
-- (void) highlightInconsistent:(int)code atRow:(int)row column:(int)column toColor:(UIColor*)color {
-    
     // What we highlight is based on the code we're passed.
-    // For meaning of values, see the gridmodel.
+    // For meaning of values, see the isConsistentAtRow:column:for method
+    // in gridmodel.
+    
+    // If there's any inconsistency at all, we play a sad sound :[.
+    if (code != 0) {
+        AudioServicesPlaySystemSound(tromboneSound);
+    }
+    
+    // We will flash at most 21 buttons.
+    NSMutableSet *buttonSet = [[NSMutableSet alloc] initWithCapacity:21];
     
     // Inconsistent row
     if (code / 100 == 1) {
         NSMutableArray *gridRow = [_cells objectAtIndex:row];
         for (int i = 0; i < 9; ++i) {
-            [[gridRow objectAtIndex:i] setBackgroundColor:color];
-            [UIView animateWithDuration:1.0
-                    delay:0.0
-                    options: UIViewAnimationOptionAutoreverse
-                    animations:^{[[gridRow objectAtIndex:i] setBackgroundColor:[UIColor grayColor]];}
-                    completion:^(BOOL finished){}];
+            [buttonSet addObject:[gridRow objectAtIndex:i]];
         }
     }
     
@@ -189,7 +209,7 @@
     if ((code % 100) / 10 == 1) {
         for (int i = 0; i < 9; ++i) {
             NSMutableArray *gridRow = [_cells objectAtIndex:i];
-            [[gridRow objectAtIndex:column] setBackgroundColor:color];
+            [buttonSet addObject:[gridRow objectAtIndex:column]];
         }
     }
     
@@ -201,11 +221,25 @@
         for (int i = topLeftRow; i < topLeftRow + 3; ++i) {
             NSMutableArray *gridRow = [_cells objectAtIndex:i];
             for (int j = topLeftColumn; j < topLeftColumn + 3; ++j) {
-                [[gridRow objectAtIndex:j] setBackgroundColor:color];
+                [buttonSet addObject:[gridRow objectAtIndex:j]];
             }
         }
     }
     
+    [[[_cells objectAtIndex:row] objectAtIndex:column] setBackgroundColor:[UIColor grayColor]];
+    
+    for (UIButton* button in buttonSet) {
+        [self flashButton:button];
+    }
+    
+}
+
+- (void) flashButton:(UIButton*)button {
+    [UIView animateWithDuration:1.2
+                          delay:0.0
+                        options:UIViewAnimationOptionAutoreverse
+                     animations:^{[button setBackgroundColor:[UIColor redColor]];}
+                     completion:^(BOOL finished) {[button setBackgroundColor:[UIColor grayColor]];}];
 }
 
 /*

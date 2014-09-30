@@ -34,7 +34,11 @@
 		034D548B19D8FF7B00B703E9 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D548A19D8FF7B00B703E9 /* settings.png */; };
 		034D548D19D903B000B703E9 /* infobutton.png in Resources */ = {isa = PBXBuildFile; fileRef = 034D548C19D903B000B703E9 /* infobutton.png */; };
 		034D549019D903D500B703E9 /* JFJPInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 034D548F19D903D500B703E9 /* JFJPInfoView.m */; };
-		034D549419D914A900B703E9 /* Applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D549319D914A900B703E9 /* Applause.wav */; };
+		034D549719DA44D600B703E9 /* erase.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D549519DA44D600B703E9 /* erase.wav */; };
+		034D549819DA44D600B703E9 /* click.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D549619DA44D600B703E9 /* click.wav */; };
+		034D549E19DA484C00B703E9 /* Applause.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D549D19DA484C00B703E9 /* Applause.wav */; };
+		034D54A019DA4A1600B703E9 /* beep.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D549F19DA4A1600B703E9 /* beep.wav */; };
+		034D54A219DA4C7600B703E9 /* trombone.wav in Resources */ = {isa = PBXBuildFile; fileRef = 034D54A119DA4C7600B703E9 /* trombone.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,7 +90,11 @@
 		034D548C19D903B000B703E9 /* infobutton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = infobutton.png; sourceTree = "<group>"; };
 		034D548E19D903D500B703E9 /* JFJPInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JFJPInfoView.h; sourceTree = "<group>"; };
 		034D548F19D903D500B703E9 /* JFJPInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JFJPInfoView.m; sourceTree = "<group>"; };
-		034D549319D914A900B703E9 /* Applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Applause.wav; path = ../Applause.wav; sourceTree = "<group>"; };
+		034D549519DA44D600B703E9 /* erase.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = erase.wav; sourceTree = "<group>"; };
+		034D549619DA44D600B703E9 /* click.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = click.wav; sourceTree = "<group>"; };
+		034D549D19DA484C00B703E9 /* Applause.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; name = Applause.wav; path = ../Applause.wav; sourceTree = "<group>"; };
+		034D549F19DA4A1600B703E9 /* beep.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = beep.wav; sourceTree = "<group>"; };
+		034D54A119DA4C7600B703E9 /* trombone.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = trombone.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,7 +178,11 @@
 				034D547D19D76E5000B703E9 /* easy.txt */,
 				034D548C19D903B000B703E9 /* infobutton.png */,
 				034D548A19D8FF7B00B703E9 /* settings.png */,
-				034D549319D914A900B703E9 /* Applause.wav */,
+				034D549D19DA484C00B703E9 /* Applause.wav */,
+				034D54A119DA4C7600B703E9 /* trombone.wav */,
+				034D549F19DA4A1600B703E9 /* beep.wav */,
+				034D549519DA44D600B703E9 /* erase.wav */,
+				034D549619DA44D600B703E9 /* click.wav */,
 				0303ABDB19C25D1A00888433 /* Images.xcassets */,
 				0303ABC719C25D1A00888433 /* Supporting Files */,
 			);
@@ -285,12 +297,16 @@
 			files = (
 				034D548119D76E5000B703E9 /* easy.txt in Resources */,
 				034D548D19D903B000B703E9 /* infobutton.png in Resources */,
-				034D549419D914A900B703E9 /* Applause.wav in Resources */,
+				034D549719DA44D600B703E9 /* erase.wav in Resources */,
 				0303ABD719C25D1A00888433 /* Main_iPad.storyboard in Resources */,
+				034D549819DA44D600B703E9 /* click.wav in Resources */,
+				034D54A019DA4A1600B703E9 /* beep.wav in Resources */,
 				034D548B19D8FF7B00B703E9 /* settings.png in Resources */,
+				034D54A219DA4C7600B703E9 /* trombone.wav in Resources */,
 				0303ABDC19C25D1A00888433 /* Images.xcassets in Resources */,
 				0303ABD419C25D1A00888433 /* Main_iPhone.storyboard in Resources */,
 				034D548019D76E5000B703E9 /* medium.txt in Resources */,
+				034D549E19DA484C00B703E9 /* Applause.wav in Resources */,
 				034D547E19D76E5000B703E9 /* simple.txt in Resources */,
 				034D547F19D76E5000B703E9 /* expert.txt in Resources */,
 				0303ABCB19C25D1A00888433 /* InfoPlist.strings in Resources */,
