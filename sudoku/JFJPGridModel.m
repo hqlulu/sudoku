@@ -28,12 +28,21 @@
     return self;
 }
 
-- (void) generateGridofDifficulty:(int)difficulty{
+- (void) generateGridofDifficulty:(int)difficulty {
     NSArray *grid = [_gridGenerator getGridWithDifficulty:difficulty];
     for (int i = 0; i < 9; ++i) {
         for (int j = 0; j < 9; ++j) {
             _cells[i][j] = [[[grid objectAtIndex:i] objectAtIndex:j] integerValue];
             _initialGrid[i][j] = [[[grid objectAtIndex:i] objectAtIndex:j] integerValue];
+        }
+    }
+}
+
+- (void) generateGridfromArray:(NSArray *)array {
+    for (int i = 0; i < 9; ++i) {
+        for (int j = 0; j < 9; ++j) {
+            _cells[i][j] = [[[array objectAtIndex:i] objectAtIndex:j] integerValue];
+            _initialGrid[i][j] = [[[array objectAtIndex:i] objectAtIndex:j] integerValue];
         }
     }
 }

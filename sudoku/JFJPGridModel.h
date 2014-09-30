@@ -16,5 +16,6 @@
 - (bool) isMutableAtRow:(int)row column:(int)column;
 - (int) isConsistentAtRow:(int)row column:(int)column for:(int)value;
 - (bool) isComplete;
+- (void) generateGridfromArray:(NSArray*)array;
 
 @end
